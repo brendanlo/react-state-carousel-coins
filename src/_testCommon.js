@@ -13,4 +13,11 @@ const TEST_IMAGES = [
   },
 ];
 
+// const TEST_CARD = {
+//   caption={ }
+//   src={ }
+//   currNum={ }
+//   totalNum={ }
+// }
+
 export default TEST_IMAGES
