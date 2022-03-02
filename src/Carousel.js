@@ -29,27 +29,28 @@ function Carousel({ photos, title }) {
     setCurrCardIdx(currCardIdx - 1);
   }
 
-  const leftEdge = (currCardIdx === 0);
-  const rightEdge = (currCardIdx === 2);
+  const isLeftEdge = (currCardIdx === 0);
+  const isRightEdge = (currCardIdx === (photos.length - 1));
 
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
-        <i
+        {isLeftEdge || <i
           className="fas fa-chevron-circle-left fa-2x"
           onClick={goBackward}
-        />
+        />}
         <Card
           caption={currCard.caption}
           src={currCard.src}
           currNum={currCardIdx + 1}
           totalNum={total}
         />
-        <i
+
+        {isRightEdge || <i
           className="fas fa-chevron-circle-right fa-2x"
           onClick={goForward}
-        />
+        />}
       </div>
     </div>
   );
