@@ -80,3 +80,32 @@ it("is a snapshot of a working version of Carousel", function () {
 
   expect(container).toMatchSnapshot();
 });
+
+it("left arrow doesn't show up on first image", function () {
+  const { container } = render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  );
+
+  const leftButton = container.querySelector(".fa-chevron-circle-left");
+  expect(leftButton).not.toBeInTheDocument();
+
+});
+
+it("right arrow doesn't show up on the last image", function () {
+  const { container } = render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  );
+  // move forward in the carousel 2 positions to the right
+  const rightArrow = container.querySelector(".fa-chevron-circle-right");
+  fireEvent.click(rightArrow);
+  fireEvent.click(rightArrow);
+
+  const leftButton = container.querySelector(".fa-chevron-circle-right");
+  expect(leftButton).not.toBeInTheDocument();
+});

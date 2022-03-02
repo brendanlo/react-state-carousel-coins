@@ -14,7 +14,7 @@ import Card from "./Card";
  * 
  * App --> Carousel --> Card
  */
- function Carousel({ photos, title }) {
+function Carousel({ photos, title }) {
   const [currCardIdx, setCurrCardIdx] = useState(0);
 
   const currCard = photos[currCardIdx];
@@ -25,13 +25,20 @@ import Card from "./Card";
     setCurrCardIdx(currCardIdx + 1);
   }
 
+  function goBackward() {
+    setCurrCardIdx(currCardIdx - 1);
+  }
+
+  const leftEdge = (currCardIdx === 0);
+  const rightEdge = (currCardIdx === 2);
+
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
         <i
           className="fas fa-chevron-circle-left fa-2x"
-          onClick={goForward}
+          onClick={goBackward}
         />
         <Card
           caption={currCard.caption}
